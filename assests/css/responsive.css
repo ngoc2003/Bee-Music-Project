@@ -43,6 +43,9 @@
         justify-content: space-between;
         align-items: center;
     }
+    .navbar-content__icon:after {
+        display:none !important;
+    }
     .js-hide-sidebar{
         display: block;
         font-size: 1.8rem;
