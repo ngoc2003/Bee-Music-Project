@@ -64,6 +64,7 @@ a{
     width: calc(100% / 4);
     border-top-left-radius: 2rem;
     border-bottom-left-radius: 2rem;
+    overflow:hidden;
 }
 .navbar-container{
     padding:3rem;
