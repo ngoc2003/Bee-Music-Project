@@ -65,6 +65,7 @@
         transition: 1s linear;
         width:23rem;
         box-shadow: 0 0 .5rem black;
+        overflow:hidden;
     }
     #main-content{
         flex:1;
