@@ -8,16 +8,15 @@ const playRepeat = document.querySelector('.play-repeat');
 const rangeBar = document.querySelector('.range');
 const playList = document.querySelector('.playlist-list');
 const shuffle = document.querySelector('.shuffle-song');
-const musics =[
+const musics = [
     {
         id: 0,
         number: '01',
-        file:'ntt.mp3',
+        file: 'ntt.mp3',
         title: 'Ngày tận thế',
         artist: 'Tóc Tiên',
         time: '3:52',
-        active:false,
-
+        active: false,
     },
     {
         id: 1,
@@ -26,8 +25,7 @@ const musics =[
         title: 'Có ai thương em như anh',
         artist: 'Tóc Tiên',
         time: '3:51',
-        active:false,
-
+        active: false,
     },
     {
         id: 2,
@@ -36,8 +34,7 @@ const musics =[
         title: 'Em đã có người mới',
         artist: 'Tóc Tiên',
         time: '3:20',
-        active:false,
-
+        active: false,
     },
     {
         id: 3,
@@ -46,8 +43,7 @@ const musics =[
         title: 'Vũ điệu cồng chiêng',
         artist: 'Tóc Tiên',
         time: '3:24',
-        active:false,
-
+        active: false,
     },
     {
         id: 4,
@@ -56,59 +52,62 @@ const musics =[
         title: 'Trên tình bạn dưới tình yêu',
         artist: 'Min',
         time: '3:19',
-        active:false,
-
+        active: false,
     },
 ];
 
 //set mặc định bài 1 phát đầu
 let indexSong = 0;
-song.setAttribute('src', `./assests/mp3/${musics[indexSong].file}`); 
+song.setAttribute('src', `./assests/mp3/${musics[indexSong].file}`);
 //==============================================
-//                  THÊM BÀI HÁT 
+//                  THÊM BÀI HÁT
 //==============================================
-for (var i = 0 ;i< musics.length; i++) {
-    playList.insertAdjacentHTML( 'beforeend',
-       `<div class="playlist playlist--hover ${i === indexSong ? 'active' : ''}" data-index=${musics[i].id}>
-            <p class=" playlist__number">${i === indexSong? '<i class="fas fa-volume-up"></i>' : `${musics[i].number}`}</p>
+for (var i = 0; i < musics.length; i++) {
+    playList.insertAdjacentHTML(
+        'beforeend',
+        `<div class="playlist playlist--hover ${i === indexSong ? 'active' : ''}" data-index=${musics[i].id}>
+            <p class=" playlist__number">${i === indexSong ? '<i class="fas fa-volume-up"></i>' : `${musics[i].number}`}</p>
             <p class=" playlist__title">${musics[i].title}</p>
             <p class=" playlist__artist">${musics[i].artist}</p>
             <p class=" playlist__time">${musics[i].time}</p>
-        </div>`)
+        </div>`
+    );
 }
 //==============================================
 //          RESET LẠI KHI CHỌN BÀI HÁT
 //==============================================
 function resetSong(dir) {
-    dir = Number (dir);
-    playList.innerHTML =`
+    dir = Number(dir);
+    playList.innerHTML = `
     <div class="playlist playlist-list__title">
         <p class="playlist__number">#</p>
         <p class="playlist__title">TITLE</p>
         <p class="playlist__artist">ARTIST</p>
         <p class="playlist__time">TIME</p>
     </div>`;
-    for (var j = 0 ;j< musics.length; j++) {
-        playList.insertAdjacentHTML( 'beforeend',
-       `<div class="playlist playlist--hover ${j === dir ? 'active' : ''}" data-index=${musics[j].id}>
-            <p class=" playlist__number">${j === dir? '<i class="fas fa-volume-up"></i>' : `${musics[j].number}`}</p>
+    for (var j = 0; j < musics.length; j++) {
+        playList.insertAdjacentHTML(
+            'beforeend',
+            `<div class="playlist playlist--hover ${j === dir ? 'active' : ''}" data-index=${musics[j].id}>
+            <p class=" playlist__number">${j === dir ? '<i class="fas fa-volume-up"></i>' : `${musics[j].number}`}</p>
             <p class=" playlist__title">${musics[j].title}</p>
             <p class=" playlist__artist">${musics[j].artist}</p>
             <p class=" playlist__time">${musics[j].time}</p>
-        </div>`)
+        </div>`
+        );
     }
 }
 //==============================================
 //                  Phát-dừng bài hát
 //==============================================
 let isPlaying = true;
-playBtn.addEventListener('click', playPause)
+playBtn.addEventListener('click', playPause);
 function playPause() {
     if (isPlaying) {
         playBtn.innerHTML = `<i class="fas fa-pause-circle pause-icon main-icon main-icon--big"></i>`;
         song.play();
         isPlaying = false;
-    } else{
+    } else {
         playBtn.innerHTML = `<i class="fas fa-play-circle play-icon main-icon main-icon--big"></i>`;
         song.pause();
         isPlaying = true;
@@ -118,12 +117,12 @@ function playPause() {
 //                  Phát lại bài hát
 //==============================================
 var isRepeat = false;
-playRepeat.addEventListener('click',  function() {
-    if(playRepeat.style.color != 'yellow') {
+playRepeat.addEventListener('click', function () {
+    if (playRepeat.style.color != 'yellow') {
         playRepeat.style.color = 'yellow';
         playRepeat.style.webkitTransform = 'rotate(360deg)';
         isRepeat = true;
-    }else {
+    } else {
         playRepeat.style.color = '#676669';
         playRepeat.style.webkitTransform = 'rotate(0)';
         isRepeat = false;
@@ -132,32 +131,34 @@ playRepeat.addEventListener('click',  function() {
 //==============================================
 //                  Đổi bài hát
 //==============================================
-nextBtn.addEventListener('click',function() {
+nextBtn.addEventListener('click', function () {
     if (isShuffle == true) changeSong(3);
     else changeSong(1);
 });
-prevBtn.addEventListener('click', function() {
+prevBtn.addEventListener('click', function () {
     if (isShuffle == true) changeSong(3);
     else changeSong(-1);
 });
 
 function changeSong(dir) {
-    if (dir === 1) { //next
+    if (dir === 1) {
+        //next
         indexSong++;
         if (indexSong >= musics.length) {
             indexSong = 0;
         }
-    } else if (dir === -1) { //prev
+    } else if (dir === -1) {
+        //prev
         indexSong--;
         if (indexSong < 0) {
-            indexSong = musics.length-1;
+            indexSong = musics.length - 1;
         }
-    } else if(dir === 3) {
-        indexSong = Math.floor(Math.random() * 5);  
+    } else if (dir === 3) {
+        indexSong = Math.floor(Math.random() * 5);
     }
     resetSong(indexSong);
     playBtn.innerHTML = `<i class="fas fa-pause-circle pause-icon main-icon main-icon--big"></i>`;
-    song.setAttribute('src', `./assests/mp3/${musics[indexSong].file}`); 
+    song.setAttribute('src', `./assests/mp3/${musics[indexSong].file}`);
     song.play();
 }
 //==============================================
@@ -184,15 +185,16 @@ function formatTimer(number) {
 //==============================================
 //  Thay đổi khúc nhạc khi click chọn rangeBar
 //==============================================
-rangeBar.addEventListener('change',changeBar);
+rangeBar.addEventListener('change', changeBar);
 function changeBar() {
-    song.currentTime = rangeBar.value; 
+    song.currentTime = rangeBar.value;
 }
 //==============================================
 //       TỰ PHÁT BÀI TIẾP KHI KẾT THÚC
 //==============================================
-song.addEventListener('ended', function() {
-    if (isRepeat == true) { // Phát lại bài hát
+song.addEventListener('ended', function () {
+    if (isRepeat == true) {
+        // Phát lại bài hát
         isPlaying = true;
         playPause();
     } else changeSong(1); // Phát tiếp
@@ -200,18 +202,16 @@ song.addEventListener('ended', function() {
 //==============================================
 //        CHỌN BÀI HÁT TRONG DANH SÁCH
 //==============================================
-playList.onclick = function(e) {
-    
-    const songNote = e.target.closest('.playlist--hover:not(.active)'); 
+playList.onclick = function (e) {
+    const songNote = e.target.closest('.playlist--hover:not(.active)');
     let songNoteindex = songNote.getAttribute('data-index'); // lấy data-index
-    indexSong = songNoteindex ;
+    indexSong = songNoteindex;
     isPlaying = false;
-    
+
     playBtn.innerHTML = `<i class="fas fa-pause-circle pause-icon main-icon main-icon--big"></i>`;
-    song.setAttribute('src', `./assests/mp3/${musics[indexSong].file}`); 
+    song.setAttribute('src', `./assests/mp3/${musics[indexSong].file}`);
     song.play();
     resetSong(songNoteindex);
-
 };
 //==============================================
 //              XÁO BÀI HÁT
@@ -223,18 +223,16 @@ function shuffleSong() {
         isShuffle = true;
         shuffle.style.color = 'yellow';
         changeSong(3);
-    }
-    else{
+    } else {
         isShuffle = false;
         shuffle.style.color = '#676669';
-
     }
 }
 //==============================================
 //                  HIỆU ỨNG TIM
 //==============================================
 const heartBtn = document.getElementById('heart');
-heartBtn.addEventListener('click', function() {
+heartBtn.addEventListener('click', function () {
     if (heartBtn.className == 'far fa-heart') {
         heartBtn.className = 'fas fa-heart';
         heartBtn.style.color = 'red';
@@ -242,12 +240,11 @@ heartBtn.addEventListener('click', function() {
         heartBtn.className = 'far fa-heart';
         heartBtn.style.color = '#676669';
     }
-})
-
+});
 
 displayTimer();
 rangeBar.value = 0;
-setInterval(displayTimer , 200); // cập nhật lại thời gian
+setInterval(displayTimer, 200); // cập nhật lại thời gian
 
 //==============================================
 //                  DARK THEME
@@ -255,14 +252,13 @@ setInterval(displayTimer , 200); // cập nhật lại thời gian
 const ball = document.querySelector('.ball');
 const blackThemeBtn = document.querySelector('.check');
 const blackThemeCanvas = document.getElementById('container');
-blackThemeBtn.addEventListener('click', function() {
+blackThemeBtn.addEventListener('click', function () {
     if (blackThemeCanvas.classList.contains('dark-theme')) {
         blackThemeCanvas.classList.remove('dark-theme');
         ball.style.left = '2px';
-    }
-    else  {
+    } else {
         blackThemeCanvas.classList.add('dark-theme');
-        ball.style.left = '22px'
+        ball.style.left = '22px';
     }
 });
 
@@ -277,21 +273,21 @@ const navBar = document.querySelector('#navbar');
 const hideNavBar = document.querySelector('.js-hide-navbar');
 const hideSideBar = document.querySelector('.js-hide-sidebar');
 
-barLeft.addEventListener('click', function() {
+barLeft.addEventListener('click', function () {
     navBar.classList.add('active');
     if (sideBar.classList.contains('active')) {
         sideBar.classList.remove('active');
     }
-})
-hideNavBar.addEventListener('click', function() {
-    navBar.classList.remove('active')
-})
-barRight.addEventListener('click', function() {
+});
+hideNavBar.addEventListener('click', function () {
+    navBar.classList.remove('active');
+});
+barRight.addEventListener('click', function () {
     sideBar.classList.add('active');
     if (navBar.classList.contains('active')) {
         navBar.classList.remove('active');
     }
-})
-hideSideBar.addEventListener('click', function() {
+});
+hideSideBar.addEventListener('click', function () {
     sideBar.classList.remove('active');
-})
+});
