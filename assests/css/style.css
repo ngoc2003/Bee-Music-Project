@@ -34,7 +34,8 @@ a{
 :root{
     --primary-color: #ffc876;
     --text-color: #676669;
-    --second-color: #092c3e;
+/*     --second-color: #092c3e; */
+    --second-color: #1d2a35;
     --third-color: #121212;
 }
 /*=========================================
