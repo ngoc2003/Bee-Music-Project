@@ -250,7 +250,7 @@ volumeControllerLeft.onclick = function() {
     valueVolume.value = 0;
     isVolume = false;
 }
-valueVolume.addEventListener('change',changeVolume);
+valueVolume.onchange = changeVolume();
 function changeVolume() {
     song.volume = valueVolume.value /100; 
 }
