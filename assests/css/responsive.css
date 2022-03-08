@@ -126,7 +126,6 @@
 @media (max-width: 500px) {
     .main-content__header-nav i:last-child{
         margin:0 1.5rem;
-
     }
     .bars-left{
         margin:0;
@@ -153,5 +152,29 @@
     .bars-right{
         padding-left:1rem;
         margin:0;
+    }
+}
+@media (max-width:400px) {
+    #container{
+        width:100%;
+    }
+    .main-content__header-nav i:not(i:first-child){
+       display: none; 
+    }
+    .play-control__volume .volume{
+        width:5rem
+    }
+
+}
+
+@media (max-width:380px) {
+    .play-control__volume .volume{
+        width:3rem
+    }
+    .play-control__act i{
+        padding: 0 .4rem
+    }
+    .playlist{
+        gap:1rem
     }
 }
