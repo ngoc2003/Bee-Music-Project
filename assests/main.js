@@ -238,7 +238,7 @@ function shuffleSong() {
 //==============================================
 let isVolume = true;
 song.volume = 0.5;
-valueVolume = 50;
+valueVolume.value = 50;
 valueVolume.max = 100;
 volumnControllerRight.onclick = function() {
     song.volume = 1;
