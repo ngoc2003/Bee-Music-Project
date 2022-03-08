@@ -9,7 +9,7 @@ const rangeBar = document.querySelector('.range');
 const playList = document.querySelector('.playlist-list');
 const shuffle = document.querySelector('.shuffle-song');
 const volumeControllerLeft = document.querySelector('.fa-volume-mute');
-const volumnControllerRight = document.querySelector('.fa-volume-up');
+const volumeControllerRight = document.querySelector('.fa-volume-up');
 const valueVolume = document.querySelector('.volume');
 const musics =[
     {
@@ -238,9 +238,10 @@ function shuffleSong() {
 //==============================================
 let isVolume = true;
 song.volume = 0.5;
-valueVolume.value = 50;
 valueVolume.max = 100;
-volumnControllerRight.onclick = function() {
+valueVolume.value = 50;
+
+volumeControllerRight.onclick = function() {
     song.volume = 1;
     valueVolume.value = 100;
     isVolume = true;
@@ -250,9 +251,8 @@ volumeControllerLeft.onclick = function() {
     valueVolume.value = 0;
     isVolume = false;
 }
-valueVolume.onchange = changeVolume();
-function changeVolume() {
-    song.volume = valueVolume.value /100; 
+valueVolume.onchange = function() {
+    song.volume = (valueVolume.value)/100; 
 }
 
 //==============================================
