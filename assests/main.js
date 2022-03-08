@@ -227,9 +227,30 @@ function shuffleSong() {
     else{
         isShuffle = false;
         shuffle.style.color = '#676669';
-
     }
 }
+
+//==============================================
+//                  ÂM THANH NHẠC
+//==============================================
+let isVolume = true;
+song.volume = 1;
+valueVolume.max = 1;
+volumnControllerRight.onclick = function() {
+    song.volume = 1;
+    valueVolume.value = 1;
+    isVolume = true;
+}
+volumeControllerLeft.onclick = function() {
+    song.volume = 0;
+    valueVolume.value = 0;
+    isVolume = false;
+}
+valueVolume.addEventListener('change',changeVolume);
+function changeVolume() {
+    song.volume = valueVolume.value; 
+}
+
 //==============================================
 //                  HIỆU ỨNG TIM
 //==============================================
@@ -243,11 +264,9 @@ heartBtn.addEventListener('click', function() {
         heartBtn.style.color = '#676669';
     }
 })
-
-
 displayTimer();
 rangeBar.value = 0;
-setInterval(displayTimer , 200); // cập nhật lại thời gian
+setInterval(displayTimer , 200); 
 
 //==============================================
 //                  DARK THEME
