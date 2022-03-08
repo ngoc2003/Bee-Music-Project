@@ -238,12 +238,12 @@ function shuffleSong() {
 //==============================================
 let isVolume = true;
 song.volume = 0.5;
-valueVolume.max = 100;
-valueVolume.value = 50;
+valueVolume.max = 1;
+valueVolume.value = 0.5;
 
 volumeControllerRight.onclick = function() {
     song.volume = 1;
-    valueVolume.value = 100;
+    valueVolume.value = 1;
     isVolume = true;
 }
 volumeControllerLeft.onclick = function() {
@@ -252,7 +252,7 @@ volumeControllerLeft.onclick = function() {
     isVolume = false;
 }
 valueVolume.onchange = function() {
-    song.volume = (valueVolume.value)/100; 
+    song.volume = valueVolume.value; 
 }
 
 //==============================================
