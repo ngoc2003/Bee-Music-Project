@@ -237,7 +237,8 @@ function shuffleSong() {
 //                  ÂM THANH NHẠC
 //==============================================
 let isVolume = true;
-song.volume = 1;
+song.volume = 0.5;
+valueVolume = 50;
 valueVolume.max = 100;
 volumnControllerRight.onclick = function() {
     song.volume = 1;
