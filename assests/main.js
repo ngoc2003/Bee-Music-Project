@@ -8,6 +8,9 @@ const playRepeat = document.querySelector('.play-repeat');
 const rangeBar = document.querySelector('.range');
 const playList = document.querySelector('.playlist-list');
 const shuffle = document.querySelector('.shuffle-song');
+const volumeControllerLeft = document.querySelector('.fa-volume-mute');
+const volumnControllerRight = document.querySelector('.fa-volume-up');
+const valueVolume = document.querySelector('.volume');
 const musics =[
     {
         id: 0,
